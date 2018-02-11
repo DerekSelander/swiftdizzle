@@ -110,6 +110,9 @@ BOOL rebind_swiftClass(const char *replacementClassName, const char *replacement
       Dl_info info = {};
       uintptr_t * ptr = (uintptr_t*)methodsAddress;
       dladdr((void *)ptr[i], &info);
+      if (info.dli_sname == NULL) {
+        continue;
+      }
       if (strcmp(info.dli_sname, method) == 0) {
         return &ptr[i];
       }
@@ -124,12 +127,10 @@ BOOL rebind_swiftClass(const char *replacementClassName, const char *replacement
   }
   
   uintptr_t *method_addr =  getAddressFromClass(repl_swiftcls,  method);
-  if (!repl_method_addr) {
+  if (!method_addr) {
     dprintf(STDERR_FILENO, "Couldn't find method \"%s\" for class \"%s\"\n", method, className);
     return YES;
   }
-  
-  
   
 
   if (repl_method_addr && method_addr) {
