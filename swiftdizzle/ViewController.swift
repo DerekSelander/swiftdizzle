@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     rebind_swiftClass("swiftdizzle.ViewController",
-                      "_T011swiftdizzle14ViewControllerC12someFunctionyyF",
+                      "$S11swiftdizzle14ViewControllerC12someFunctionyyF",
                       "swiftdizzle.ViewController",
-                      "_T011swiftdizzle14ViewControllerC15omagerdFunctionyyF",
+                      "$S11swiftdizzle14ViewControllerC15omagerdFunctionyyF",
                       true)
     print("In \(#function) about to call self.someFunction()...")
     self.someFunction()
